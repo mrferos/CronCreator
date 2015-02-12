@@ -101,7 +101,11 @@ class CronCreator
     {
         $file = $this->_defaultCronJobFile;
         if (!file_exists($file)) {
-            @touch($file);
+            if (!is_writable(dirname($file))) {
+                throw new \RuntimeException("'{$file}' can not be created");
+            }
+
+            touch($file);
             if (!file_exists($file)) {
                 throw new \RuntimeException('Could not create "' . $file . '"');
             }
