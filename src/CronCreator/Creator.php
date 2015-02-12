@@ -115,6 +115,8 @@ class Creator implements CreatorInterface
 
             $this->_components[$lesserUnit] = 0;
         }
+
+        return $this;
     }
 
     /**
@@ -136,6 +138,7 @@ class Creator implements CreatorInterface
 
         $this->_components['week'] = implode(',', $convertedWeekdays);
 
+        return $this;
     }
 
     /**
@@ -165,6 +168,8 @@ class Creator implements CreatorInterface
         }
 
         $this->_components['day'] = implode(',', $days);
+
+        return $this;
     }
 
     /**
@@ -189,6 +194,8 @@ class Creator implements CreatorInterface
         }
 
         $this->_components['hour'] = implode(',', $times);
+
+        return $this;
     }
 
     /**
@@ -228,6 +235,8 @@ class Creator implements CreatorInterface
         $this->_components['month'] = implode(',', array_map(function($value) {
             return ++$value;
         }, $convertedMonths));
+
+        return $this;
     }
 
     /**
@@ -238,6 +247,7 @@ class Creator implements CreatorInterface
     public function execute($command)
     {
         $this->_components['command'] .= $command;
+        return $this;
     }
 
     /**
